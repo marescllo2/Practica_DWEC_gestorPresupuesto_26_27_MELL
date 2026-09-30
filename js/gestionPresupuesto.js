@@ -12,17 +12,25 @@ function actualizarPresupuesto(newpresupuesto) {
         presupuesto = newpresupuesto
         return presupuesto;
     }else{
-        alert("Error al poner el nuevo presupuesto, comprueba el tipo o que sea mayor que 0")
+        console.log("Error al poner el nuevo presupuesto, comprueba el tipo o que sea mayor que 0")
         return -1;
     }
 
 }
 
 function mostrarPresupuesto() {
+    return `Tu presupuesto actual es de ${presupuesto} €`;
+
 }
 
-function CrearGasto() {
-    // TODO
+function CrearGasto(descripcion, valor ) {
+    if(typeof valor !== 'number' &&  valor <0)
+        valor = 0
+
+    return {
+        descripcion: descripcion,
+        valor: valor
+    }
 }
 
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
