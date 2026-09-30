@@ -1,14 +1,24 @@
+'use strict';
 // TODO: Crear las funciones, objetos y variables indicadas en el enunciado
 
 // TODO: Variable global
 
+let presupuesto = 0
 
-function actualizarPresupuesto() {
-    // TODO
+function actualizarPresupuesto(newpresupuesto) {
+    
+    if(typeof newpresupuesto === 'number' && newpresupuesto >= 0)
+    {
+        presupuesto = newpresupuesto
+        return presupuesto;
+    }else{
+        alert("Error al poner el nuevo presupuesto, comprueba el tipo o que sea mayor que 0")
+        return -1;
+    }
+
 }
 
 function mostrarPresupuesto() {
-    // TODO
 }
 
 function CrearGasto() {
