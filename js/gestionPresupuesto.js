@@ -25,17 +25,24 @@ function mostrarPresupuesto() {
 
 }
 
-function CrearGasto(descripcion,valor) {
+function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
 
     if(typeof valor !== "number" || valor < 0){
         valor = 0;
     }
 
+    if(typeof fecha !== "string" || isNaN(Date.parse(fecha)))
+        fecha = Date.now()
+    else
+        fecha = Date.parse(fecha)
+
     this.descripcion = descripcion;
     this.valor = valor;
+    this.etiquetas = etiquetas;
+    this.fecha = fecha
     
     this.mostrarGasto = function() {
-        return `Gasto correspondiente a ${descripcion} con valor ${valor} €`;
+        return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`;
     };
 
     this.actualizarDescripcion = function(newdescripcion) {
@@ -48,6 +55,12 @@ function CrearGasto(descripcion,valor) {
         }
         this.valor = newValor;
     };
+
+    this.anyadirEtiquetas = function(...newEtiquetas){
+        for ( let newEtiqueta of newEtiquetas )
+            if(!this.etiquetas.includes(newEtiqueta))
+                this.etiquetas.push(newEtiqueta)
+    }
 
 }
 
@@ -70,10 +83,10 @@ function calcularBalance(){}
 export   {
     mostrarPresupuesto, 
     actualizarPresupuesto,
+    CrearGasto,
     listarGastos,
     anyadirGasto,
     borrarGasto,
     calcularTotalGastos,
     calcularBalance,
-    CrearGasto
 }
