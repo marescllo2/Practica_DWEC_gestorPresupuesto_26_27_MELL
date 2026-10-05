@@ -4,7 +4,7 @@
 // TODO: Variable global
 
 let presupuesto = 0
-let gasto = []
+let gastos = []
 let idGasto = 0
 
 function actualizarPresupuesto(newpresupuesto) {
@@ -65,10 +65,14 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
 }
 
 function listarGastos(){
-    return gasto
+    return gastos
 }
 
-function anyadirGasto(){}
+function anyadirGasto(gasto){
+    gasto.id = idGasto
+    idGasto++;
+    gastos.push(gasto)
+}
 
 function borrarGasto(){}
 
