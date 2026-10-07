@@ -81,11 +81,10 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         }
     }
 
-    this.anyadirEtiquetas = function(...newEtiquetas){
-
-    }
     this.borrarEtiquetas = function (...borrarEtiquetas){
-
+        for ( let borrarEtiqueta of borrarEtiquetas )
+            if(this.etiquetas.includes(borrarEtiqueta))
+                this.etiquetas = this.etiquetas.filter(etiqueta => etiqueta != borrarEtiqueta)
     }
 
 }
