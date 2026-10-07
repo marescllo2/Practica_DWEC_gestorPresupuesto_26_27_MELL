@@ -56,10 +56,36 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         this.valor = newValor;
     };
 
+    this.mostrarGastoCompleto = function() {
+        let textEtiquetas  = "";
+
+        for (let etiqueta of this.etiquetas) {
+            textEtiquetas  += `- ${etiqueta}\n`;
+        }
+        return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €.\n` +
+            `Fecha: ${new Date(this.fecha).toLocaleString()}\n` +
+            `Etiquetas:\n` +
+            textEtiquetas;
+    };
+
     this.anyadirEtiquetas = function(...newEtiquetas){
         for ( let newEtiqueta of newEtiquetas )
             if(!this.etiquetas.includes(newEtiqueta))
                 this.etiquetas.push(newEtiqueta)
+    }
+
+    this.actualizarFecha = function(newfecha){
+        if(typeof newfecha === "string"){
+            if(!isNaN(Date.parse(newfecha)))
+                this.fecha = Date.parse(newfecha)
+        }
+    }
+
+    this.anyadirEtiquetas = function(...newEtiquetas){
+
+    }
+    this.borrarEtiquetas = function (...borrarEtiquetas){
+
     }
 
 }
